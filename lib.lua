@@ -622,7 +622,46 @@ do
             Visible = true,
         }, Library.Ignores)
         --
-   
+        do
+
+        --
+        local Anime = Utility.AddDrawing("Image", {
+            Transparency = 0.5, 
+            Visible = false
+        }, Library.Ignores)
+        --
+        local WindowOutline = Utility.AddDrawing("Square", {
+            Size = Size,
+            Thickness = 0,
+            Color = Library.Theme.Outline,
+            Visible = true,
+            Filled = true
+        })
+        --
+        WindowOutline.Position = Utility.MiddlePos(WindowOutline)
+        --
+        local WindowOutlineBorder = Utility.AddDrawing("Square", {
+            Size = Vector2.new(WindowOutline.Size.X - 2, WindowOutline.Size.Y - 2),
+            Position = Vector2.new(WindowOutline.Position.X + 1, WindowOutline.Position.Y + 1),
+            Thickness = 0,
+            Color = Library.Theme.Accent[1],
+            Visible = true,
+            Filled = true
+        })
+        --
+        local WindowFrame = Utility.AddDrawing("Square", {
+            Size = Vector2.new(WindowOutlineBorder.Size.X - 2, WindowOutlineBorder.Size.Y - 2),
+            Position = Vector2.new(WindowOutlineBorder.Position.X + 1, WindowOutlineBorder.Position.Y + 1),
+            Thickness = 0,
+            Transparency = 1,
+            Color = Library.Theme.DarkContrast,
+            Visible = true,
+            Filled = true
+        })
+        --
+
+        --
+        Utility.AddCursor(WindowFrame)
         --
         local WindowHeader = Utility.AddDrawing("Square", {
             Size = Vector2.new(WindowOutlineBorder.Size.X - 2, 70),
