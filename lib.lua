@@ -469,9 +469,7 @@ do
         })
         --
 
-        --
-        MiddleIcon.Position = Vector2.new(WindowOutline.Position.X + (WindowOutline.Size.X / 2) - (MiddleIcon.Size.X / 2), WindowOutline.Position.Y + (WindowOutline.Size.Y / 2) - (MiddleIcon.Size.Y / 2) - 15)
-        --
+        -- 
         Window.SetText = function(Val, Txt)
             SliderFrame.Size = Vector2.new(((SliderInline.Size.X - 2) / (Window.Max / math.clamp(Val, 0, Window.Max))), SliderInline.Size.Y - 2)
             WindowText.Text = Txt
@@ -4573,3 +4571,4 @@ do
         return Window
     end
 end
+
