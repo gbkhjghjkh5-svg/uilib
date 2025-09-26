@@ -78,20 +78,26 @@ function Library:Create(Class, Properties)
 end;
 
 function Library:CreateLabel(Properties, IsHud)
+    Properties = Properties or {}
+    if Properties.Text ~= nil then
+        Properties.Text = tostring(Properties.Text)
+    end
+
     local _Instance = Library:Create('TextLabel', {
         BackgroundTransparency = 1;
         Font = Enum.Font.Code;
         TextColor3 = Library.FontColor;
         TextSize = 16;
         TextStrokeTransparency = 0;
-    });
+    })
 
     Library:AddToRegistry(_Instance, {
         TextColor3 = 'FontColor';
-    }, IsHud);
+    }, IsHud)
 
-    return Library:Create(_Instance, Properties);
-end;
+    return Library:Create(_Instance, Properties)
+end
+
 
 function Library:MakeDraggable(Instance, Cutoff)
     Instance.Active = true;
@@ -2540,5 +2546,6 @@ function Library:CreateWindow(WindowTitle)
 
     return Window;
 end;
+
 
 return Library;
