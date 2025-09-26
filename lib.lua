@@ -669,16 +669,7 @@ do
                 Data = Library.Theme.Gradient
             }, Library.Keybind)
             --
-            local WindowText = Utility.AddDrawing("Text", {
-                Font = Library.Theme.Font,
-                Size = Library.Theme.TextSize,
-                Color = Library.Theme.Text,
-                Text = "Keybinds",
-                Position = Vector2.new(WindowOutlineBorder.Position.X + (WindowOutlineBorder.Size.X / 2), WindowOutlineBorder.Position.Y + 2),
-                Visible = true,
-                Center = true,
-                Outline = false
-            }, Library.Keybind)
+
             --
             local CurrentBinds = Utility.AddDrawing("Text", {
                 Font = Library.Theme.Font,
@@ -706,7 +697,6 @@ do
                 WindowImage.Size = WindowFrame.Size
                 WindowImage.Position = WindowFrame.Position
 
-                WindowText.Position = Vector2.new(WindowOutlineBorder.Position.X + (WindowOutlineBorder.Size.X / 2), WindowOutlineBorder.Position.Y + 2)
             end)
             --
             Utility.AddDrag(WindowOutline, Library.Keybind)
@@ -724,137 +714,7 @@ do
                 end
             end)
         end
-        --
-        local Anime = Utility.AddDrawing("Image", {
-            Transparency = 0.5, 
-            Visible = false
-        }, Library.Ignores)
-        --
-        local WindowOutline = Utility.AddDrawing("Square", {
-            Size = Size,
-            Thickness = 0,
-            Color = Library.Theme.Outline,
-            Visible = true,
-            Filled = true
-        })
-        --
-        WindowOutline.Position = Utility.MiddlePos(WindowOutline)
-        --
-        local WindowOutlineBorder = Utility.AddDrawing("Square", {
-            Size = Vector2.new(WindowOutline.Size.X - 2, WindowOutline.Size.Y - 2),
-            Position = Vector2.new(WindowOutline.Position.X + 1, WindowOutline.Position.Y + 1),
-            Thickness = 0,
-            Color = Library.Theme.Accent[1],
-            Visible = true,
-            Filled = true
-        })
-        --
-        local WindowFrame = Utility.AddDrawing("Square", {
-            Size = Vector2.new(WindowOutlineBorder.Size.X - 2, WindowOutlineBorder.Size.Y - 2),
-            Position = Vector2.new(WindowOutlineBorder.Position.X + 1, WindowOutlineBorder.Position.Y + 1),
-            Thickness = 0,
-            Transparency = 1,
-            Color = Library.Theme.DarkContrast,
-            Visible = true,
-            Filled = true
-        })
-        --
 
-        --
-        Utility.AddCursor(WindowFrame)
-        --
-        local WindowHeader = Utility.AddDrawing("Square", {
-            Size = Vector2.new(WindowOutlineBorder.Size.X - 2, 70),
-            Position = Vector2.new(WindowOutlineBorder.Position.X + 1, WindowOutlineBorder.Position.Y + 1),
-            Thickness = 0,
-            Transparency = 0,
-            Color = Library.Theme.Hitbox,
-            Visible = true,
-            Filled = true
-        })
-        --
-        Utility.AddDrag(WindowHeader, Library.Drawings)
-        --
-        local WindowTopline = Utility.AddDrawing("Square", {
-            Size = Vector2.new(WindowOutlineBorder.Size.X, 1),
-            Position = Vector2.new(WindowOutlineBorder.Position.X, WindowOutlineBorder.Position.Y),
-            Thickness = 0,
-            Color = Library.Theme.Accent[1],
-            Visible = false,
-            Filled = true
-        })
-        --
-        local WindowImage = Utility.AddDrawing("Image", {
-            Size = WindowFrame.Size,
-            Position = WindowFrame.Position,
-            Transparency = 1, 
-            Visible = false,
-            Data = Library.Theme.Gradient
-        })
-        --
-        local WindowTitle = Utility.AddDrawing("Text", {
-            Font = Library.Theme.Font,
-            Size = Library.Theme.TextSize,
-            Color = Library.Theme.Text,
-            Text = Title,
-            Position = Vector2.new(WindowOutlineBorder.Position.X + 8, WindowOutlineBorder.Position.Y + 6),
-            Visible = true,
-            Center = false,
-            Outline = false
-        })
-        --
-        local SecondBorderInline = Utility.AddDrawing("Square", {
-            Size = Vector2.new(Size.X - 17, Size.Y - 90),
-            Position = Vector2.new(WindowOutlineBorder.Position.X + 8, WindowOutlineBorder.Position.Y + 82),
-            Thickness = 0,
-            Color = Library.Theme.Inline,
-            Visible = true,
-            Filled = true
-        })
-        --
-        local SecondBorderOutline = Utility.AddDrawing("Square", {
-            Size = Vector2.new(SecondBorderInline.Size.X - 2, SecondBorderInline.Size.Y - 2),
-            Position = Vector2.new(SecondBorderInline.Position.X + 1, SecondBorderInline.Position.Y + 1),
-            Thickness = 0,
-            Color = Library.Theme.LightContrast,
-            Visible = true,
-            Filled = true
-        })
-        --
-        local TabLine = Utility.AddDrawing("Square", {
-            Thickness = 0,
-            Color = Library.Theme.Accent[1], --Library.Theme.Outline,
-            Visible = true,
-            Filled = true,
-            ZIndex = 2
-        })
-        --
-        local DisableLine = Utility.AddDrawing("Square", {
-            Thickness = 0,
-            Color = Library.Theme.LightContrast, --Library.Theme.Outline,
-            Visible = true,
-            Filled = true,
-            ZIndex = 3
-        })
-        --
-        Utility.AddConnection(Library.Communication.Event, function(Type, Color)
-            if Type == "Accent" then
-                WindowOutlineBorder.Color = Color
-                WindowTopline.Color = Color
-                TabLine.Color = Color
-            elseif Type == "Outline" then
-                WindowOutline.Color = Color
-            elseif Type == "LightContrast" then
-                DisableLine.Color = Color
-                SecondBorderOutline.Color = Color
-            elseif Type == "DarkContrast" then
-                WindowFrame.Color = Color
-            elseif Type == "Text" then
-                WindowTitle.Color = Color
-            elseif Type == "Inline" then
-                SecondBorderInline.Color = Color
-            end
-        end)
         --
         Window["PageCover"] = SecondBorderInline
         --
@@ -4571,4 +4431,5 @@ do
         return Window
     end
 end
+
 
